@@ -14,10 +14,16 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import CloseIcon from "@material-ui/icons/Close";
+import SlideList from "./slideDesktop";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
+  },
+  appBar : {
+    backgroundColor : "rgb(33, 133, 60)",
+    position : "static",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -83,26 +89,41 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [sideAnchorE1, setSideAnchorE1] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isSide = Boolean(sideAnchorE1);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log("handleProfileMenu()", event.currentTarget)
   };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
+    console.log("handleMobileMenuClose()")
   };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    console.log("handleMenuClose()")
     handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleSideBar = (event) =>
+  {
+      setSideAnchorE1(event.currentTarget);
+      console.log("Slide Bar")
+  }
+  const handleSideBarClose = () =>
+  {
+      setSideAnchorE1(null);
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -161,9 +182,12 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  const sideBarMenuId = "sideBarMenu";
+  const renderSideBarMenu = (<SlideList />);
+
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar className={classes.appBar}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -172,6 +196,7 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
           >
             <MenuIcon />
+            
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
