@@ -6,7 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -15,6 +14,13 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import CloseIcon from "@material-ui/icons/Close";
+
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 import SlideList from "./slideDesktop";
 
 const useStyles = makeStyles((theme) => ({
@@ -118,11 +124,17 @@ export default function PrimarySearchAppBar() {
   const handleSideBar = (event) =>
   {
       setSideAnchorE1(event.currentTarget);
-      console.log("Slide Bar")
+      console.log("Slide Bar", event.currentTarget)
   }
   const handleSideBarClose = () =>
   {
       setSideAnchorE1(null);
+  }
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      
+    }
   }
 
   const menuId = 'primary-search-account-menu';
@@ -183,7 +195,26 @@ export default function PrimarySearchAppBar() {
   );
 
   const sideBarMenuId = "sideBarMenu";
-  const renderSideBarMenu = (<SlideList />);
+  const renderSideBarMenu = (
+    <Popper open={isSide} anchorEl={sideAnchorE1} role={undefined} transition disablePortal>
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleSideBarClose}>
+                  <MenuList autoFocusItem={isSide}  id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    <MenuItem onClick={handleSideBarClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleSideBarClose}>My account</MenuItem>
+                    <MenuItem onClick={handleSideBarClose}>Logout</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+  );
 
   return (
     <div className={classes.grow}>
@@ -194,6 +225,7 @@ export default function PrimarySearchAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleSideBar}
           >
             <MenuIcon />
             
