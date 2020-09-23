@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import NavBar from "./components/navbar";
+import NavigationDrawer from "./components/navigationDrawer";
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <NavigationDrawer msg={"jjskadhsa"}/>
     </div>
   );
 }
