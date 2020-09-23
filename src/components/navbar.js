@@ -22,6 +22,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import SlideList from "./slideDesktop";
+import Drawer from "./drawer";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -99,7 +100,7 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const isSide = Boolean(sideAnchorE1);
+  const isSideOpen = Boolean(sideAnchorE1);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -196,7 +197,7 @@ export default function PrimarySearchAppBar() {
 
   const sideBarMenuId = "sideBarMenu";
   const renderSideBarMenu = (
-    <Popper open={isSide} anchorEl={sideAnchorE1} role={undefined} transition disablePortal>
+    <Popper open={isSideOpen} anchorEl={sideAnchorE1} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
@@ -204,7 +205,7 @@ export default function PrimarySearchAppBar() {
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleSideBarClose}>
-                  <MenuList autoFocusItem={isSide}  id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuList autoFocusItem={isSideOpen}  id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <MenuItem onClick={handleSideBarClose}>Profile</MenuItem>
                     <MenuItem onClick={handleSideBarClose}>My account</MenuItem>
                     <MenuItem onClick={handleSideBarClose}>Logout</MenuItem>
@@ -215,6 +216,8 @@ export default function PrimarySearchAppBar() {
           )}
         </Popper>
   );
+
+  const renderDrawer = (<Drawer />)
 
   return (
     <div className={classes.grow}>
@@ -284,6 +287,7 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      {renderDrawer}
     </div>
   );
 }
