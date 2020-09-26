@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import NavigationDrawer from "./components/navigationDrawer";
-import CardView from "./components/cardView";
+import MyGridView from "./components/gridView";
+
 
 function App() {
   return (
     <div>
-      <CardView />
+      <MyGridView />
     </div>
   );
 }

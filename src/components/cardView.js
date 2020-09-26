@@ -20,9 +20,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard({obj}) {
   const classes = useStyles();
-
+  console.log(obj["img"][0])
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -30,7 +30,7 @@ export default function ImgMediaCard() {
           component="img"
           alt="Contemplative Reptile"
           height="200"
-          image={ dummyData['image'] }
+          image={ obj["img"][0] }
           title="Contemplative Reptile"
         />
         <CardContent>
