@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import MyGridView from "./components/gridView";
+import NavigationDrawer from "./components/navigationDrawer";
+import {BrowserRouter as Router} from 'react-router-dom'
 
 
 function App() {
   return (
     <div>
-      <MyGridView />
+      
+      <Router>
+      <NavigationDrawer />
+      </Router>
     </div>
   );
 }

@@ -15,8 +15,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Badge from '@material-ui/core/Badge';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
@@ -25,6 +23,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import MyGridView from "./gridView";
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
+import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
+import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
+import { Routes, Route, Link} from 'react-router-dom'
 
 
 
@@ -140,8 +143,29 @@ const useStyles = makeStyles((theme) => ({
   },
   grow : {
     flexGrow : 1,
+  },
+  link : {
+    textDecoration : 'none',
+    color : 'black',
+  },
+  head : {
+    textDecoration : 'none',
+    color : 'white',
   }
 }));
+
+ function renderIcon(text)
+ {
+  switch(text)
+  {
+    case 'Football':
+      return <SportsSoccerIcon />
+    case 'Basketball':
+      return <SportsBasketballIcon />
+    case 'Running':
+      return <DirectionsRunIcon />
+  }
+ }
 
 export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
@@ -250,7 +274,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            <Link to={"/"} className={classes.head} >Haider Shoes</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -313,14 +337,26 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {
+            
+            ['Football', 'Basketball', 'Running'].map(
+              (text, index) =>
+              (
+                <Link to={"/" + text} className={classes.link} >
+                <ListItem button key={text} >
+                  <ListItemIcon>
+                    {
+                      renderIcon(text)
+                    }
+                  </ListItemIcon>
+                  <ListItemText> {text} </ListItemText>
+                </ListItem>
+                </Link>
+              )
+            )
+          }
         </List>
-        <Divider />
+        {/* <Divider />
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
@@ -328,7 +364,7 @@ export default function PersistentDrawerLeft(props) {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -340,7 +376,17 @@ export default function PersistentDrawerLeft(props) {
         
         {renderMobileMenu}
         {renderMenu}
-        {props.msg}
+        
+
+        <Routes>
+          <Route path="/" element={<MyGridView value="All" />} />
+          <Route path="/football" element={<MyGridView value="Football" />} />
+          <Route path="/basketball" element={<MyGridView value="Basketball" />} />
+          <Route path="/running" element={<MyGridView value="Running" />} />
+           
+        </Routes>
+        
+        
       </main>
     </div>
   );
