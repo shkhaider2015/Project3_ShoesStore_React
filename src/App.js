@@ -2,15 +2,16 @@ import React from 'react';
 import './App.css';
 import NavigationDrawer from "./components/navigationDrawer";
 import {BrowserRouter as Router} from 'react-router-dom'
+import Product from "./components/product";
 
 
 function App() {
   return (
     <div>
-      
-      <Router>
+      <Product />
+      {/* <Router>
       <NavigationDrawer />
-      </Router>
+      </Router> */}
     </div>
   );
 }

@@ -7,7 +7,7 @@ const useStyle = makeStyles(
     (theme) => (
         {
             container: {
-                margin: "5%"
+                margin: "0%"
             }
         }
     )
@@ -44,7 +44,6 @@ function GridView(props) {
             {
                 MyData.map(
                     (obj, ind) => {
-                        console.log("Object", obj.id)
                         if (props.value !== "All") {
                             if (getCategory(props.value, obj)) {
                                 return (

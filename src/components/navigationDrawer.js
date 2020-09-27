@@ -164,6 +164,8 @@ const useStyles = makeStyles((theme) => ({
       return <SportsBasketballIcon />
     case 'Running':
       return <DirectionsRunIcon />
+    default:
+      return <DirectionsRunIcon />
   }
  }
 
