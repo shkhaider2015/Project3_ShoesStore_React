@@ -106,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: 'auto',
     },
+    [theme.breakpoints.down("xs")] : {
+      display : 'none'
+    }
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -140,6 +143,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  searchDesktop : {
+
+  },
+  searchMobile : {
+
   },
   grow : {
     flexGrow : 1,
@@ -278,6 +287,7 @@ export default function PersistentDrawerLeft(props) {
           <Typography variant="h6" noWrap>
             <Link to={"/"} className={classes.head} >Haider Shoes</Link>
           </Typography>
+          
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -291,6 +301,7 @@ export default function PersistentDrawerLeft(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 17 new notifications" color="inherit">
@@ -310,6 +321,11 @@ export default function PersistentDrawerLeft(props) {
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
+            <IconButton
+            color = "inherit"
+            >
+              <SearchIcon />
+            </IconButton>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
