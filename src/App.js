@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import NavigationDrawer from "./components/navigationDrawer";
 import {BrowserRouter as Router} from 'react-router-dom'
-import Product from "./components/product";
+import MyProducts from "./components/products";
 
 
 function App() {
   return (
     <div>
-      <Product />
+      <MyProducts />
       {/* <Router>
       <NavigationDrawer />
       </Router> */}
