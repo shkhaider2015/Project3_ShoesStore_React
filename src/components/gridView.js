@@ -7,7 +7,8 @@ const useStyle = makeStyles(
     (theme) => (
         {
             container: {
-                margin: "0%"
+                margin: "0%",
+                backgroundColor: theme.palette.background.paper,
             }
         }
     )

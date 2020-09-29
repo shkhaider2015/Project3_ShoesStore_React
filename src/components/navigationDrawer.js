@@ -27,7 +27,8 @@ import MyGridView from "./gridView";
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
-import { Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
+import MyProducts from './products';
 
 
 
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    backgroundColor : "rgb(33, 133, 60)",
+    backgroundColor: "rgb(33, 133, 60)",
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -106,8 +107,8 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: 'auto',
     },
-    [theme.breakpoints.down("xs")] : {
-      display : 'none'
+    [theme.breakpoints.down("xs")]: {
+      display: 'none'
     }
   },
   searchIcon: {
@@ -144,29 +145,27 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  searchDesktop : {
+  searchDesktop: {
 
   },
-  searchMobile : {
+  searchMobile: {
 
   },
-  grow : {
-    flexGrow : 1,
+  grow: {
+    flexGrow: 1,
   },
-  link : {
-    textDecoration : 'none',
-    color : 'black',
+  link: {
+    textDecoration: 'none',
+    color: 'black',
   },
-  head : {
-    textDecoration : 'none',
-    color : 'white',
+  head: {
+    textDecoration: 'none',
+    color: 'white',
   }
 }));
 
- function renderIcon(text)
- {
-  switch(text)
-  {
+function renderIcon(text) {
+  switch (text) {
     case 'Football':
       return <SportsSoccerIcon />
     case 'Basketball':
@@ -176,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
     default:
       return <DirectionsRunIcon />
   }
- }
+}
 
 export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
@@ -287,7 +286,7 @@ export default function PersistentDrawerLeft(props) {
           <Typography variant="h6" noWrap>
             <Link to={"/"} className={classes.head} >Haider Shoes</Link>
           </Typography>
-          
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -301,7 +300,7 @@ export default function PersistentDrawerLeft(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 17 new notifications" color="inherit">
@@ -322,7 +321,7 @@ export default function PersistentDrawerLeft(props) {
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
-            color = "inherit"
+              color="inherit"
             >
               <SearchIcon />
             </IconButton>
@@ -336,7 +335,7 @@ export default function PersistentDrawerLeft(props) {
               <MoreIcon />
             </IconButton>
           </div>
-       
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -356,21 +355,21 @@ export default function PersistentDrawerLeft(props) {
         <Divider />
         <List>
           {
-            
+
             ['Football', 'Basketball', 'Running'].map(
               (text, index) =>
-              (
-                <Link to={"/" + text} className={classes.link} >
-                <ListItem button key={text} >
-                  <ListItemIcon>
-                    {
-                      renderIcon(text)
-                    }
-                  </ListItemIcon>
-                  <ListItemText> {text} </ListItemText>
-                </ListItem>
-                </Link>
-              )
+                (
+                  <Link key={index} to={"/" + text} className={classes.link} >
+                    <ListItem button key={text} >
+                      <ListItemIcon>
+                        {
+                          renderIcon(text)
+                        }
+                      </ListItemIcon>
+                      <ListItemText> {text} </ListItemText>
+                    </ListItem>
+                  </Link>
+                )
             )
           }
         </List>
@@ -390,21 +389,30 @@ export default function PersistentDrawerLeft(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        
-        
+
+
         {renderMobileMenu}
         {renderMenu}
-        
+
 
         <Routes>
-          <Route path="/" element={<MyGridView value="All" />} />
-          <Route path="/football" element={<MyGridView value="Football" />} />
-          <Route path="/basketball" element={<MyGridView value="Basketball" />} />
-          <Route path="/running" element={<MyGridView value="Running" />} />
-           
+          <Route path="/" element={<MyGridView value="All" />} >
+            
+          </Route>
+          <Route path="/football" element={<MyGridView value="Football" />} >
+
+            </Route>
+            <Route path="/basketball" element={<MyGridView value="Basketball" />}>
+              
+            </Route>
+            <Route path="/running" element={<MyGridView value="Running" />}>
+
+            </Route>
+
+
         </Routes>
-        
-        
+
+
       </main>
     </div>
   );

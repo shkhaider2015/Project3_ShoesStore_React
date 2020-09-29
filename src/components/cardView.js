@@ -18,12 +18,18 @@ const useStyles = makeStyles({
   },
 });
 
+function clik()
+{
+  console.log("clicke card")
+}
+
 export default function ImgMediaCard({obj}) {
   const classes = useStyles();
   console.log(obj["img"][0])
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea
+      >
         <CardMedia
           component="img"
           alt="Contemplative Reptile"

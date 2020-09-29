@@ -3,6 +3,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
+import { useParams } from 'react-router-dom';
 
 const useStyle = makeStyles(
     (theme) => (
@@ -23,6 +24,7 @@ const useStyle = makeStyles(
                 justifyContent: 'space-around',
                 overflow: 'hidden',
                 backgroundColor: theme.palette.background.paper,
+                
             },
             gridList: {
                 width: "50%",
@@ -45,14 +47,16 @@ const useStyle = makeStyles(
         }
     )
 )
-const val = 3.3;
+
 
 function MyProducts() {
     const classes = useStyle();
+    const val = 3.3;
 
     return (
         <div className={classes.root}>
             <div className={classes.images}>
+    <h1>{val}</h1>
                 <Paper
                 elevation={2}
                 style={{margin : '1%', paddingLeft : '1%', paddingRight: '1%'}}
