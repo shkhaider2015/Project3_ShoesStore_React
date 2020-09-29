@@ -29,6 +29,7 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
 import { Routes, Route, Link } from 'react-router-dom'
 import MyProducts from './products';
+import FullImage from './fullscreenImage';
 
 
 
@@ -412,6 +413,7 @@ export default function PersistentDrawerLeft(props) {
 
             <Route path=":id" element={<MyProducts/>}  />
             <Route path=":cat/:id" element={<MyProducts/>} />
+            <Route path="fullscreenimage/imageName" element={ <FullImage /> } />
 
 
         </Routes>

@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const useStyle = makeStyles(
     (theme) => (
@@ -11,7 +11,7 @@ const useStyle = makeStyles(
             root: {
 
             },
-            description : {
+            description: {
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'left',
@@ -24,13 +24,13 @@ const useStyle = makeStyles(
                 justifyContent: 'space-around',
                 overflow: 'hidden',
                 backgroundColor: theme.palette.background.paper,
-                
+
             },
             gridList: {
                 width: "50%",
-                [theme.breakpoints.down('sm')] :{
-                    width : '80%',
-                    cols : '1'
+                [theme.breakpoints.down('sm')]: {
+                    width: '80%',
+                    cols: '1'
                 }
             },
             buttons: {
@@ -40,10 +40,10 @@ const useStyle = makeStyles(
                 overflow: 'hidden',
                 backgroundColor: theme.palette.background.paper,
             },
-            addToCart : {
-                marginTop : theme.spacing(2),
-                marginBottom : theme.spacing(4),
-                color : '#FFFFFF'
+            addToCart: {
+                marginTop: theme.spacing(2),
+                marginBottom: theme.spacing(4),
+                color: '#FFFFFF'
             }
 
         }
@@ -60,21 +60,20 @@ function MyProducts() {
         <div className={classes.root}>
             <div className={classes.images}>
                 <Paper
-                elevation={2}
-                style={{margin : '1%', paddingLeft : '1%', paddingRight: '1%'}}
+                    elevation={2}
+                    style={{ margin: '1%', paddingLeft: '1%', paddingRight: '1%' }}
                 >
                     <h3> <b>
                         {
                             MyData.map(
                                 (obj, ind) => {
-                                    if(id == obj.id)
-                                    {
+                                    if (id == obj.id) {
                                         return obj.name
                                     }
                                 }
                             )
                         }
-                        </b> </h3>
+                    </b> </h3>
                 </Paper>
             </div>
             <div className={classes.images}>
@@ -86,9 +85,14 @@ function MyProducts() {
                                 if (id == obj.id) {
                                     return obj.img.map(
                                         (obj, ind) => (
-                                            <GridListTile key={ind} cols={1}>
-                                                <img src={obj} alt={obj[ind]} />
-                                            </GridListTile>
+                                            
+                                                <GridListTile key={ind} cols={1}>
+                                                    
+                                                    <img src={obj} alt={obj[ind]} />
+                                                    
+                                                    
+                                                </GridListTile>
+                                            
                                         )
 
                                     )
@@ -103,13 +107,13 @@ function MyProducts() {
 
 
                 <MuiThemeProvider theme={blueTheme}>
-                <Button
-                 variant="contained" 
-                 color="primary"
-                 className={classes.addToCart}
-                 startIcon={<ShoppingCartIcon />}
-                 >
-                    Add To Cart
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.addToCart}
+                        startIcon={<ShoppingCartIcon />}
+                    >
+                        Add To Cart
                 </Button>
                 </MuiThemeProvider>
 

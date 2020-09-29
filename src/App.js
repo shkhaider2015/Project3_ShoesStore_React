@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavigationDrawer from "./components/navigationDrawer";
-import {BrowserRouter as Router} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import MyProducts from "./components/products";
 
 
