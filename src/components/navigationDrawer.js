@@ -396,18 +396,22 @@ export default function PersistentDrawerLeft(props) {
 
 
         <Routes>
-          <Route path="/" element={<MyGridView value="All" />} >
+          <Route path="/" element={<MyGridView value={"All"} />} >
             
           </Route>
-          <Route path="/football" element={<MyGridView value="Football" />} >
+          <Route path="football" element={<MyGridView value="Football" />} >
+          
 
             </Route>
-            <Route path="/basketball" element={<MyGridView value="Basketball" />}>
-              
+            <Route path="basketball" element={<MyGridView value="Basketball" />}>
+            
             </Route>
-            <Route path="/running" element={<MyGridView value="Running" />}>
+            <Route path="running" element={<MyGridView value="Running" />}>
+            
+            </Route>
 
-            </Route>
+            <Route path=":id" element={<MyProducts/>}  />
+            <Route path=":cat/:id" element={<MyProducts/>} />
 
 
         </Routes>

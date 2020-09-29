@@ -57,7 +57,7 @@ function GridView(props) {
                                         xl={3}
                                         key={ind}
                                     >
-                                        <MyCard obj={obj} />
+                                        <MyCard obj={obj} value={0} />
 
                                     </Grid>
                                 )
@@ -74,7 +74,7 @@ function GridView(props) {
                                     xl={3}
                                     key={ind}
                                 >
-                                    <MyCard obj={obj} />
+                                    <MyCard obj={obj} value={1} />
 
                                 </Grid>
                             )

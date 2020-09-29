@@ -1,4 +1,4 @@
-import { GridListTile, GridList, makeStyles, Paper } from '@material-ui/core';
+import { GridListTile, GridList, makeStyles, Paper, colors, MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -41,22 +41,24 @@ const useStyle = makeStyles(
                 backgroundColor: theme.palette.background.paper,
             },
             addToCart : {
-                marginTop : theme.spacing(2)
+                marginTop : theme.spacing(2),
+                marginBottom : theme.spacing(4),
+                color : '#FFFFFF'
             }
 
         }
     )
 )
+const blueTheme = createMuiTheme({ palette: { primary: colors.green } })
 
 
 function MyProducts() {
     const classes = useStyle();
-    const val = 3.3;
+    const { id } = useParams();
 
     return (
         <div className={classes.root}>
             <div className={classes.images}>
-    <h1>{val}</h1>
                 <Paper
                 elevation={2}
                 style={{margin : '1%', paddingLeft : '1%', paddingRight: '1%'}}
@@ -65,7 +67,7 @@ function MyProducts() {
                         {
                             MyData.map(
                                 (obj, ind) => {
-                                    if(val === obj.id)
+                                    if(id == obj.id)
                                     {
                                         return obj.name
                                     }
@@ -81,7 +83,7 @@ function MyProducts() {
                     {
                         MyData.map(
                             (obj, ind) => {
-                                if (val === obj.id) {
+                                if (id == obj.id) {
                                     return obj.img.map(
                                         (obj, ind) => (
                                             <GridListTile key={ind} cols={1}>
@@ -99,6 +101,8 @@ function MyProducts() {
             </div>
             <div className={classes.images}>
 
+
+                <MuiThemeProvider theme={blueTheme}>
                 <Button
                  variant="contained" 
                  color="primary"
@@ -107,6 +111,7 @@ function MyProducts() {
                  >
                     Add To Cart
                 </Button>
+                </MuiThemeProvider>
 
             </div>
         </div>
