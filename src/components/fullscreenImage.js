@@ -24,7 +24,7 @@ const useStyle = makeStyles(
 function FullImage()
 {
     const classes = useStyle();
-    const { imageName } = useParams();
+    const { id, index } = useParams();
 
     return(
         <div className={classes.root}>
@@ -32,7 +32,15 @@ function FullImage()
 
                     <Grid className={classes.myGrid}  item xs={12} sm={12} md={12} lg={12}>
 
-                        <img src={ imageName } />
+                        <img src={ MyData.map(
+                            (obj, ind) =>
+                            {
+                                if(id == obj.id)
+                                {
+                                    return(obj.img[index])
+                                }
+                            }
+                        ) } />
 
                     </Grid>
             </Grid>

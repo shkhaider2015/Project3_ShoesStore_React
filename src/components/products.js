@@ -44,13 +44,21 @@ const useStyle = makeStyles(
                 marginTop: theme.spacing(2),
                 marginBottom: theme.spacing(4),
                 color: '#FFFFFF'
+            },
+            myLink : {
+                textDecoration : "none",
+                height : '20%'
             }
 
         }
     )
 )
 const blueTheme = createMuiTheme({ palette: { primary: colors.green } })
-
+function handleClick(x)
+{
+    console.log("Clicked")
+    
+}
 
 function MyProducts() {
     const classes = useStyle();
@@ -77,7 +85,7 @@ function MyProducts() {
                 </Paper>
             </div>
             <div className={classes.images}>
-                <GridList cellHeight={220} className={classes.gridList} cols={3}>
+                <GridList cellHeight={220} className={classes.gridList} spacing={10} cols={3}>
 
                     {
                         MyData.map(
@@ -86,13 +94,17 @@ function MyProducts() {
                                     return obj.img.map(
                                         (obj, ind) => (
                                             
-                                                <GridListTile key={ind} cols={1}>
+                                            <GridListTile key={ind} cols={1}>
+                                                
+                                                
+                                                <img src={obj} alt={obj[ind]} />
+                                              
+                                                
                                                     
-                                                    <img src={obj} alt={obj[ind]} />
-                                                    
-                                                    
-                                                </GridListTile>
-                                            
+                                            </GridListTile>
+                                           
+
+
                                         )
 
                                     )
@@ -118,7 +130,7 @@ function MyProducts() {
                 </MuiThemeProvider>
 
             </div>
-        </div>
+        </div >
     )
 
 

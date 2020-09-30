@@ -412,8 +412,10 @@ export default function PersistentDrawerLeft(props) {
             </Route>
 
             <Route path=":id" element={<MyProducts/>}  />
-            <Route path=":cat/:id" element={<MyProducts/>} />
-            <Route path="fullscreenimage/imageName" element={ <FullImage /> } />
+            <Route path=":cat/:id" element={<MyProducts/>}>
+            <Route path=":index" element={ <FullImage /> } />
+            </Route>
+            
 
 
         </Routes>
