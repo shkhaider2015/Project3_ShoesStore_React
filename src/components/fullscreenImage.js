@@ -41,7 +41,7 @@ function FullImage()
                                     return(obj.img[index])
                                 }
                             }
-                        ) } />
+                        ) } alt="" />
 
                     </Grid>
             </Grid>

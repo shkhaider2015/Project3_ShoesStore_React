@@ -3,7 +3,9 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Route, Routes } from 'react-router-dom';
+import FullImage from "./fullscreenImage";
+
 
 const useStyle = makeStyles(
     (theme) => (
@@ -98,12 +100,12 @@ function MyProducts() {
                             (obj, ind) => {
                                 if (id == obj.id) {
                                     return obj.img.map(
-                                        (obj, ind) => (
+                                        (obj, index) => (
                                             
-                                            <GridListTile className={classes.gridItem} key={ind} cols={1}>
+                                            <GridListTile className={classes.gridItem} key={index} cols={1}>
                                                 
-                                                <Link to={"" + ind} className={classes.myLink}>
-                                                    <img className={classes.myImage} src={obj} alt={obj[ind]} />
+                                                <Link to={"full/" + index} className={classes.myLink} key={index}>
+                                                    <img className={classes.myImage} src={obj} alt={obj[index]} />
                                                 </Link>
                                                 
                                               
@@ -138,6 +140,7 @@ function MyProducts() {
                 </MuiThemeProvider>
 
             </div>
+            
         </div >
     )
 
