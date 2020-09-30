@@ -25,8 +25,9 @@ function FullImage()
 {
     const classes = useStyle();
     const { id, index } = useParams();
-
+    console.log("id", index)
     return(
+        
         <div className={classes.root}>
             <Grid container >
 

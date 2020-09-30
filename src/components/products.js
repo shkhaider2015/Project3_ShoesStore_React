@@ -28,10 +28,13 @@ const useStyle = makeStyles(
             },
             gridList: {
                 width: "50%",
+                position : "relative",
                 [theme.breakpoints.down('sm')]: {
                     width: '80%',
                     cols: '1'
                 }
+            },
+            gridItem : {
             },
             buttons: {
                 display: 'flex',
@@ -47,7 +50,10 @@ const useStyle = makeStyles(
             },
             myLink : {
                 textDecoration : "none",
-                height : '20%'
+            },
+            myImage : {
+                width : "100%",
+                height : "100%",
             }
 
         }
@@ -94,10 +100,12 @@ function MyProducts() {
                                     return obj.img.map(
                                         (obj, ind) => (
                                             
-                                            <GridListTile key={ind} cols={1}>
+                                            <GridListTile className={classes.gridItem} key={ind} cols={1}>
                                                 
+                                                <Link to={"" + ind} className={classes.myLink}>
+                                                    <img className={classes.myImage} src={obj} alt={obj[ind]} />
+                                                </Link>
                                                 
-                                                <img src={obj} alt={obj[ind]} />
                                               
                                                 
                                                     
