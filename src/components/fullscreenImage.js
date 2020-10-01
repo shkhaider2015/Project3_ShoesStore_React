@@ -1,7 +1,6 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React from 'react'
-import { useParams } from 'react-router-dom';
-import IMAGE from "../temp/1_1.jpg";
+import { Outlet, useParams } from 'react-router-dom';
 import MyData from "../temp/MyData.json";
 
 const useStyle = makeStyles(
@@ -9,7 +8,8 @@ const useStyle = makeStyles(
     (
         {
             root : {
-                
+                width : '100%',
+                height : 'auto'
             },
             myGrid : {
                 display: 'flex',
@@ -25,10 +25,12 @@ function FullImage()
 {
     const classes = useStyle();
     const { id, index } = useParams();
-    console.log("id", index)
+    console.log("id", id, index)
     return(
         
+        
         <div className={classes.root}>
+            
             <Grid container >
 
                     <Grid className={classes.myGrid}  item xs={12} sm={12} md={12} lg={12}>
@@ -45,7 +47,9 @@ function FullImage()
 
                     </Grid>
             </Grid>
+            
         </div>
+        
     )
 
 }

@@ -29,7 +29,7 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
 import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import MyProducts from './products';
-import FullImage from './fullscreenImage';
+import FullImage from "./fullscreenImage";
 
 
 
@@ -397,34 +397,19 @@ export default function PersistentDrawerLeft(props) {
 
 
         <Routes>
-          <Route path="/" element={<MyGridView value={"All"} />} >
-            
-          </Route>
-          <Route path="football" element={<MyGridView value="Football" />} >
-          
+          <Route path="/" element={<MyGridView value={"All"} />} />
+          <Route path="football" element={<MyGridView value="Football" />} />
+          <Route path="basketball" element={<MyGridView value="Basketball" />}/>
+          <Route path="running" element={<MyGridView value="Running" />}/>
+          {/* <Route path="full/:id/:index" element={<FullImage  />} /> */}
+          <Route path=":id" element={<MyProducts/>}  />
+          <Route path=":cat/:id/*" element={<MyProducts/>} />
 
-            </Route>
-            <Route path="basketball" element={<MyGridView value="Basketball" />}>
-            
-            </Route>
-            <Route path="running" element={<MyGridView value="Running" />}>
-            
-            </Route>
-
-            <Route path=":id" element={<MyProducts/>}  />
-            <Route path=":cat/:id" element={<MyProducts/>}>
-            
-            </Route>
-
-            <Route path="full/:index" element={<FullImage  />} />
-            
-            
             
 
 
         </Routes>
-
-
+        
       </main>
     </div>
   );

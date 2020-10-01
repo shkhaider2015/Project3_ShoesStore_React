@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
-import { Link, useParams, Route, Routes } from 'react-router-dom';
+import { Link, useParams, Route, Routes, Outlet } from 'react-router-dom';
 import FullImage from "./fullscreenImage";
 
 
@@ -11,7 +11,7 @@ const useStyle = makeStyles(
     (theme) => (
         {
             root: {
-
+                zIndex : 1
             },
             description: {
                 display: 'flex',
@@ -74,6 +74,7 @@ function MyProducts() {
 
     return (
         <div className={classes.root}>
+            
             <div className={classes.images}>
                 <Paper
                     elevation={2}
@@ -93,6 +94,7 @@ function MyProducts() {
                 </Paper>
             </div>
             <div className={classes.images}>
+            
                 <GridList cellHeight={220} className={classes.gridList} spacing={10} cols={3}>
 
                     {
@@ -104,7 +106,7 @@ function MyProducts() {
                                             
                                             <GridListTile className={classes.gridItem} key={index} cols={1}>
                                                 
-                                                <Link to={"full/" + index} className={classes.myLink} key={index}>
+                                                <Link to={`full/${index}`} className={classes.myLink} key={index}>
                                                     <img className={classes.myImage} src={obj} alt={obj[index]} />
                                                 </Link>
                                                 
@@ -123,7 +125,7 @@ function MyProducts() {
                         )
                     }
                 </GridList>
-
+                
             </div>
             <div className={classes.images}>
 
@@ -140,7 +142,14 @@ function MyProducts() {
                 </MuiThemeProvider>
 
             </div>
-            
+           
+            <div className={classes.images}>
+                    
+                        
+                        
+                        
+                    
+            </div>
         </div >
     )
 
