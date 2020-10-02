@@ -1,10 +1,11 @@
 import { GridListTile, GridList, makeStyles, Paper, colors, MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
 import { Link, useParams, Route, Routes, Outlet } from 'react-router-dom';
 import FullImage from "./fullscreenImage";
+import { CartContext } from "../contexts/cartContext";
 
 
 const useStyle = makeStyles(
@@ -62,15 +63,26 @@ const useStyle = makeStyles(
     )
 )
 const blueTheme = createMuiTheme({ palette: { primary: colors.green } })
-function handleClick(x)
-{
-    console.log("Clicked")
-    
-}
+
 
 function MyProducts() {
     const classes = useStyle();
     const { id } = useParams();
+    let {cart, addToCart} = useContext(CartContext)
+
+
+    function handleCart()
+{
+    console.log("cart button Clicked")
+    addToCart(
+        {
+            id : id
+        }
+    )
+
+    console.log("Cart in products", cart)
+    
+}
 
     return (
         <div className={classes.root}>
@@ -136,6 +148,7 @@ function MyProducts() {
                         color="primary"
                         className={classes.addToCart}
                         startIcon={<ShoppingCartIcon />}
+                        onClick={handleCart}
                     >
                         Add To Cart
                 </Button>

@@ -30,6 +30,7 @@ import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
 import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import MyProducts from './products';
 import FullImage from "./fullscreenImage";
+import CartList from "./cartList";
 
 
 
@@ -306,7 +307,10 @@ export default function PersistentDrawerLeft(props) {
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
+                <Link to="/mycart" className={classes.link} >
                 <ShoppingCartIcon />
+                </Link>
+                
               </Badge>
             </IconButton>
             <IconButton
@@ -401,6 +405,8 @@ export default function PersistentDrawerLeft(props) {
           <Route path="football" element={<MyGridView value="Football" />} />
           <Route path="basketball" element={<MyGridView value="Basketball" />}/>
           <Route path="running" element={<MyGridView value="Running" />}/>
+          <Route path="mycart" element={<CartList />}/>
+
           {/* <Route path="full/:id/:index" element={<FullImage  />} /> */}
           <Route path=":id" element={<MyProducts/>}  />
           <Route path=":cat/:id/*" element={<MyProducts/>} />
