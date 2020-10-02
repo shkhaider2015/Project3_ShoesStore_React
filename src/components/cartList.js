@@ -21,8 +21,11 @@ const useStyle = makeStyles(
                     height: "100%",
                 },
                 textGrid: {
-                    // textAlign: 'center',
                     border : '1px solid black',
+                    display : 'flex',
+                    alignItems : 'center',
+                    justifyContent : 'center'
+
 
                 }
             }
@@ -43,8 +46,8 @@ function CartList() {
                         <img className={classes.myImage} src={IMAGE} alt="" />
                     </Grid>
 
-                    <Grid  className={classes.textGrid} item xs={8} align="center" justify="center" >
-                        <div><h1>Rs : 180</h1></div>
+                    <Grid  className={classes.textGrid} item xs={8} >
+                        <h1>Rs : 180</h1>
                     </Grid>
 
 
