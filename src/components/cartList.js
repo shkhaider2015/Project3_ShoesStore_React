@@ -12,7 +12,6 @@ const useStyle = makeStyles(
                 },
                 myPaper: {
                     width: '40%',
-                    height: "auto",
                 },
                 myContainer: {
 
@@ -22,7 +21,9 @@ const useStyle = makeStyles(
                     height: "100%",
                 },
                 textGrid: {
-                    textAlign : 'center'
+                    // textAlign: 'center',
+                    border : '1px solid black',
+
                 }
             }
         )
@@ -36,13 +37,14 @@ function CartList() {
         <div className={classes.root}>
 
             <Paper className={classes.myPaper} elevation={2}>
-                <Grid container alignItems="center"   xs={12}>
+                <Grid container xs={12} >
 
                     <Grid item xs={4}>
                         <img className={classes.myImage} src={IMAGE} alt="" />
                     </Grid>
-                    <Grid className={classes.textGrid}  item xs={8}>
-                        <h1>Rs : 180</h1>
+
+                    <Grid  className={classes.textGrid} item xs={8} align="center" justify="center" >
+                        <div><h1>Rs : 180</h1></div>
                     </Grid>
 
 
