@@ -21,7 +21,6 @@ const useStyle = makeStyles(
                     height: "100%",
                 },
                 textGrid: {
-                    border : '1px solid black',
                     display : 'flex',
                     alignItems : 'center',
                     justifyContent : 'center'
