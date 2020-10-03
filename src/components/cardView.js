@@ -5,17 +5,13 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import image from "../temp/1_1.jpg";
 import { Link } from 'react-router-dom';
 
-const dummyData = {
-  image: image,
-  name: "Bio 21",
-  price: "$130"
-}
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    minWidth : 100,
   },
   myLink : {
     textDecoration : 'none',
@@ -23,15 +19,10 @@ const useStyles = makeStyles({
   }
 });
 
-function clik() {
-  console.log("clicke card")
-}
 
 
 export default function ImgMediaCard({ obj, value }) {
   const classes = useStyles();
-  console.log(obj["img"][0])
-  console.log("Value : ", value)
 
   function getURL()
   { 

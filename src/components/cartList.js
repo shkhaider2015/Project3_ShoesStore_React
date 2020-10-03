@@ -27,8 +27,6 @@ const useStyle = makeStyles(
 function CartList() {
     const classes = useStyle();
     const { cart, addToCart } = useContext(CartContext)
-    console.log("Cart : ", cart)
-    console.log("addToCart", addToCart)
     return (
         <div className={classes.root}>
             <ul className={classes.myUl}>
@@ -39,7 +37,6 @@ function CartList() {
                         {
                             return <li key={ind} className={classes.myLi}>
                                 <CartItem value={obj} />
-                                    {/* {ind <= 0 ? "" : <CartItem value={obj.id} />} */}
                             </li>
                         }
                     )

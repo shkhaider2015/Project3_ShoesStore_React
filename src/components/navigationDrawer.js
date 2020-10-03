@@ -164,6 +164,9 @@ const useStyles = makeStyles((theme) => ({
   head: {
     textDecoration: 'none',
     color: 'white',
+  },
+  listItemIcon :{
+    color : 'green'
   }
 }));
 
@@ -186,9 +189,9 @@ export default function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const {cart} = useContext(CartContext)
+  const { cart } = useContext(CartContext)
   console.log("Special Cart", cart)
-  const [cartBadge, setCartBadge ] = useState(0)
+  const [cartBadge, setCartBadge] = useState(0)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -248,14 +251,16 @@ export default function PersistentDrawerLeft(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <Link to="/mycart" className={classes.link}>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+          <Badge badgeContent={cartBadge} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
         <p>Cart</p>
       </MenuItem>
+      </Link>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -271,7 +276,7 @@ export default function PersistentDrawerLeft(props) {
   );
 
   useEffect(
-    ()=>{
+    () => {
       setCartBadge(cart.length - 1)
     }, [cart]
   )
@@ -315,14 +320,16 @@ export default function PersistentDrawerLeft(props) {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <Link to="/mycart" className={classes.head} ><IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={cartBadge} color="secondary">
-                
-                <ShoppingCartIcon />
-                
-                
-              </Badge>
-            </IconButton></Link>
+            <Link to="/mycart" className={classes.head} >
+              <IconButton aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={cartBadge} color="secondary">
+
+                  <ShoppingCartIcon />
+
+
+                </Badge>
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -376,7 +383,7 @@ export default function PersistentDrawerLeft(props) {
                 (
                   <Link key={index} to={"/" + text} className={classes.link} >
                     <ListItem button key={text} >
-                      <ListItemIcon>
+                      <ListItemIcon className={classes.listItemIcon}>
                         {
                           renderIcon(text)
                         }
@@ -413,19 +420,19 @@ export default function PersistentDrawerLeft(props) {
         <Routes>
           <Route path="/" element={<MyGridView value={"All"} />} />
           <Route path="football" element={<MyGridView value="Football" />} />
-          <Route path="basketball" element={<MyGridView value="Basketball" />}/>
-          <Route path="running" element={<MyGridView value="Running" />}/>
-          <Route path="mycart" element={<CartList />}/>
+          <Route path="basketball" element={<MyGridView value="Basketball" />} />
+          <Route path="running" element={<MyGridView value="Running" />} />
+          <Route path="mycart" element={<CartList />} />
 
           {/* <Route path="full/:id/:index" element={<FullImage  />} /> */}
-          <Route path=":id" element={<MyProducts/>}  />
-          <Route path=":cat/:id/*" element={<MyProducts/>} />
+          <Route path=":id" element={<MyProducts />} />
+          <Route path=":cat/:id/*" element={<MyProducts />} />
 
-            
+
 
 
         </Routes>
-        
+
       </main>
     </div>
   );

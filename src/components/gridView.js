@@ -7,8 +7,14 @@ const useStyle = makeStyles(
     (theme) => (
         {
             container: {
-                margin: "0%",
                 backgroundColor: theme.palette.background.paper,
+                display : 'flex',
+                flexWrap : 'center',
+                justifyContent: 'space-around',
+                overflow : 'hidden',
+                [theme.breakpoints.up('lg')] : {
+                    paddingLeft : '10%'
+                }
             }
         }
     )
@@ -29,7 +35,7 @@ function GridView(props) {
     return (
         <Grid
             container
-            spacing={8}
+            spacing={4}
             className={classes.container}
         >
             <Grid
@@ -50,7 +56,7 @@ function GridView(props) {
                                 return (
                                     <Grid
                                         item
-                                        xs={12}
+                                        xs={6}
                                         sm={6}
                                         md={4}
                                         lg={4}
@@ -67,7 +73,7 @@ function GridView(props) {
                             return (
                                 <Grid
                                     item
-                                    xs={12}
+                                    xs={6}
                                     sm={6}
                                     md={4}
                                     lg={4}

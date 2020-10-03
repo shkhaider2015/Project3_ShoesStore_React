@@ -9,7 +9,8 @@ const useStyle = makeStyles(
         (
             {
                 root: {
-                    padding: theme.spacing(0)
+                    padding: theme.spacing(0),
+                    margin : theme.spacing(4)
                 },
                 myPaper: {
                     width: '80%',

@@ -123,12 +123,5 @@
         ],
         "price" : 3899,
         "categorie" : "Football"
-    },
-    {
-        "id" : 0.0,
-        "name" : "",
-        "img" : ["", ""],
-        "price" : 0,
-        "categorie" : ""
     }
 ]
