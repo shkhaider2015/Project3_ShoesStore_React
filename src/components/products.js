@@ -83,6 +83,11 @@ function MyProducts() {
     
 }
 
+function handleFull()
+{
+
+}
+
     return (
         <div className={classes.root}>
             
@@ -115,12 +120,12 @@ function MyProducts() {
                                     return obj.img.map(
                                         (obj, index) => (
                                             
-                                            <GridListTile className={classes.gridItem} key={index} cols={1}>
+                                            <GridListTile className={classes.gridItem} key={index} cols={1} onClick={handleFull}>
                                                 
-                                                <Link to={`full/${index}`} className={classes.myLink} key={index}>
+                                                {/* <Link to={`fsi`} className={classes.myLink} key={index}>
                                                     <img className={classes.myImage} src={obj} alt={obj[index]} />
-                                                </Link>
-                                                
+                                                </Link> */}
+                                                <img className={classes.myImage} src={obj} alt={obj[index]} />
                                               
                                                 
                                                     
