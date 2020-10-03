@@ -45,8 +45,8 @@ function CartItem({ value }) {
                         if (obj.id === value.id && obj.id !== 0) {
 
                             return (
-                                <Paper className={classes.myPaper} elevation={2}>
-                                    <Grid container xs={12} >
+                                <Paper className={classes.myPaper} elevation={2} key={ind}>
+                                    <Grid container >
 
                                         <Grid item xs={4}>
                                             <img className={classes.myImage} src={obj.img[0]} alt="" />

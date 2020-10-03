@@ -67,7 +67,7 @@ const blueTheme = createMuiTheme({ palette: { primary: colors.green } })
 function MyProducts() {
     const classes = useStyle();
     const { id } = useParams();
-    let {cart, addToCart} = useContext(CartContext)
+    let {addToCart} = useContext(CartContext)
 
 
     function handleCart()
@@ -76,7 +76,6 @@ function MyProducts() {
         id : Number(id)
     }
     addToCart(myObj)
-    console.log(cart)
 }
 
 function handleFull()
@@ -96,7 +95,7 @@ function handleFull()
                         {
                             MyData.map(
                                 (obj, ind) => {
-                                    if (id === obj.id) {
+                                    if (Number(id) === obj.id) {
                                         return obj.name
                                     }
                                     else
@@ -114,7 +113,7 @@ function handleFull()
                     {
                         MyData.map(
                             (obj, ind) => {
-                                if (id === obj.id) {
+                                if (Number(id) === obj.id) {
                                     return obj.img.map(
                                         (obj, index) => (
                                             
