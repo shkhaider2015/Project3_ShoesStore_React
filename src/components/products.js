@@ -76,7 +76,7 @@ function MyProducts() {
         id : Number(id)
     }
     addToCart(myObj)
-    
+    console.log(cart)
 }
 
 function handleFull()
