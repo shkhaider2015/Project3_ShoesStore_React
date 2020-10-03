@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -31,6 +31,7 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import MyProducts from './products';
 import FullImage from "./fullscreenImage";
 import CartList from "./cartList";
+import { CartContext } from "../contexts/cartContext";
 
 
 
@@ -185,6 +186,9 @@ export default function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const {cart} = useContext(CartContext)
+  console.log("Special Cart", cart)
+  const [cartBadge, setCartBadge ] = useState(0)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -266,6 +270,12 @@ export default function PersistentDrawerLeft(props) {
     </Menu>
   );
 
+  useEffect(
+    ()=>{
+      setCartBadge(cart.length - 1)
+    }, [cart]
+  )
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -305,14 +315,14 @@ export default function PersistentDrawerLeft(props) {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <Link to="/mycart" className={classes.link} >
+          <Link to="/mycart" className={classes.head} ><IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={cartBadge} color="secondary">
+                
                 <ShoppingCartIcon />
-                </Link>
+                
                 
               </Badge>
-            </IconButton>
+            </IconButton></Link>
             <IconButton
               edge="end"
               aria-label="account of current user"

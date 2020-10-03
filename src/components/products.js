@@ -74,11 +74,10 @@ function MyProducts() {
     function handleCart()
 {
     console.log("cart button Clicked")
-    addToCart(
-        {
-            id : id
-        }
-    )
+    let myObj = {
+        id : Number(id)
+    }
+    addToCart(myObj)
 
     console.log("Cart in products", cart)
     

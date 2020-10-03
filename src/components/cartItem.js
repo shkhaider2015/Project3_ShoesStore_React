@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid, makeStyles, Paper } from '@material-ui/core';
 import IMAGE from "../temp/1_1.jpg";
 import MyData from "../temp/MyData.json";
@@ -9,10 +9,10 @@ const useStyle = makeStyles(
         (
             {
                 root: {
-                    padding: theme.spacing(5)
+                    padding: theme.spacing(0)
                 },
                 myPaper: {
-                    width: '40%',
+                    width: '80%',
                 },
                 myContainer: {
 
@@ -22,9 +22,9 @@ const useStyle = makeStyles(
                     height: "100%",
                 },
                 textGrid: {
-                    display : 'flex',
-                    alignItems : 'center',
-                    justifyContent : 'center'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
 
 
                 }
@@ -32,41 +32,39 @@ const useStyle = makeStyles(
         )
 )
 
-function getElement(x)
-{
-    MyData.map(
-        (obj, ind) =>
-        {
-            if(x == obj.id)
-            {
-                return obj
-            }
-        }
-    )
-}
 
-function CartItem(props) {
+function CartItem({ value }) {
     const classes = useStyle();
-    const currentObject = getElement(props.value)
-    
-    console.log("Current Object : ",currentObject)
+
     return (
         <div className={classes.root}>
 
-            <Paper className={classes.myPaper} elevation={2}>
-                <Grid container xs={12} >
+            {
+                MyData.map(
+                    (obj, ind) => {
+                        if (obj.id == value.id && obj.id != 0) {
 
-                    <Grid item xs={4}>
-                        <img className={classes.myImage} src={currentObject.img[0]} alt="" />
-                    </Grid>
+                            return (
+                                <Paper className={classes.myPaper} elevation={2}>
+                                    <Grid container xs={12} >
 
-                    <Grid  className={classes.textGrid} item xs={8} >
-                        <h1>Rs : {currentObject.price} </h1>
-                    </Grid>
+                                        <Grid item xs={4}>
+                                            <img className={classes.myImage} src={obj.img[0]} alt="" />
+                                        </Grid>
+
+                                        <Grid className={classes.textGrid} item xs={8} >
+                                            <h1>Rs : {obj.price} </h1>
+                                        </Grid>
 
 
-                </Grid>
-            </Paper>
+                                    </Grid>
+                                </Paper>
+
+                            )
+                        }
+                    }
+                )
+            }
 
         </div>
     )

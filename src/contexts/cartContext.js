@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import CartReducer from "../reducers/cartReducer";
 
 const initialValue = [
-    {id : 0}
+    {id : 0.0}
 ];
 
 const CartContext = createContext(initialValue);

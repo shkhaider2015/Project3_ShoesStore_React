@@ -9,6 +9,15 @@ const useStyle = makeStyles(
     (theme) => (
         {
             root: {
+                display: 'flex',
+                flexWrap: 'center',
+                justifyContent: 'space-around',
+                overflow : 'hidden'
+            }, 
+            myUl : {
+                listStyleType : 'none',
+            },
+            myLi : {
 
             }
         }
@@ -22,20 +31,22 @@ function CartList() {
     console.log("addToCart", addToCart)
     return (
         <div className={classes.root}>
-            <ul>
+            <ul className={classes.myUl}>
                 {
 
                     cart.length <= 1 ? <h3>Empty</h3> : cart.map(
                         (obj, ind) => 
                         {
-                            return <li key={ind}>
-                                    {ind <= 0 ? "" : <CartItem value={obj.id} />}
+                            return <li key={ind} className={classes.myLi}>
+                                <CartItem value={obj} />
+                                    {/* {ind <= 0 ? "" : <CartItem value={obj.id} />} */}
                             </li>
                         }
                     )
                     
                 }
             </ul>
+
         </div>
     )
 
