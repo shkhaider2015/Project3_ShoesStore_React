@@ -1,6 +1,6 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React from 'react'
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MyData from "../temp/MyData.json";
 
 const useStyle = makeStyles(
@@ -38,10 +38,10 @@ function FullImage()
                         <img src={ MyData.map(
                             (obj, ind) =>
                             {
-                                if(id == obj.id)
-                                {
+                                if(id === obj.id)
                                     return(obj.img[index])
-                                }
+                                else
+                                    return null
                             }
                         ) } alt="" />
 

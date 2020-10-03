@@ -27,7 +27,7 @@ export default function ImgMediaCard({ obj, value }) {
   function getURL()
   { 
     let myStr = "";
-    if(value == 0)
+    if(value === 0)
     {
       myStr = myStr + obj["id"]
     }

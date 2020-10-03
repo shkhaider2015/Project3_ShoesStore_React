@@ -26,7 +26,7 @@ const useStyle = makeStyles(
 
 function CartList() {
     const classes = useStyle();
-    const { cart, addToCart } = useContext(CartContext)
+    const { cart } = useContext(CartContext)
     return (
         <div className={classes.root}>
             <ul className={classes.myUl}>

@@ -27,7 +27,7 @@ import MyGridView from "./gridView";
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
-import { Routes, Route, Link, Outlet } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import MyProducts from './products';
 import FullImage from "./fullscreenImage";
 import CartList from "./cartList";

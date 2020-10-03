@@ -3,8 +3,7 @@ import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
-import { Link, useParams, Route, Routes, Outlet } from 'react-router-dom';
-import FullImage from "./fullscreenImage";
+import { useParams } from 'react-router-dom';
 import { CartContext } from "../contexts/cartContext";
 
 
@@ -73,13 +72,10 @@ function MyProducts() {
 
     function handleCart()
 {
-    console.log("cart button Clicked")
     let myObj = {
         id : Number(id)
     }
     addToCart(myObj)
-
-    console.log("Cart in products", cart)
     
 }
 
@@ -100,9 +96,11 @@ function handleFull()
                         {
                             MyData.map(
                                 (obj, ind) => {
-                                    if (id == obj.id) {
+                                    if (id === obj.id) {
                                         return obj.name
                                     }
+                                    else
+                                        return null
                                 }
                             )
                         }
@@ -116,7 +114,7 @@ function handleFull()
                     {
                         MyData.map(
                             (obj, ind) => {
-                                if (id == obj.id) {
+                                if (id === obj.id) {
                                     return obj.img.map(
                                         (obj, index) => (
                                             
@@ -137,6 +135,8 @@ function handleFull()
 
                                     )
                                 }
+                                else
+                                    return null
                             }
                         )
                     }

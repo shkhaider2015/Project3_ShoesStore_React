@@ -68,6 +68,8 @@ function GridView(props) {
                                     </Grid>
                                 )
                             }
+                            else
+                                return null
                         }
                         else {
                             return (

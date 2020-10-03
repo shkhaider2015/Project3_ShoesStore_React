@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Grid, makeStyles, Paper } from '@material-ui/core';
-import IMAGE from "../temp/1_1.jpg";
 import MyData from "../temp/MyData.json";
 
 
@@ -43,7 +42,7 @@ function CartItem({ value }) {
             {
                 MyData.map(
                     (obj, ind) => {
-                        if (obj.id == value.id && obj.id != 0) {
+                        if (obj.id === value.id && obj.id !== 0) {
 
                             return (
                                 <Paper className={classes.myPaper} elevation={2}>
@@ -63,6 +62,8 @@ function CartItem({ value }) {
 
                             )
                         }
+                        else
+                            return null
                     }
                 )
             }
