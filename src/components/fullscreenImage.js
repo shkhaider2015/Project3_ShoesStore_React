@@ -9,13 +9,15 @@ const useStyle = makeStyles(
         {
             root : {
                 width : '100%',
-                height : 'auto'
             },
             myGrid : {
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
                 overflow: 'hidden',
+            },
+            myImg : {
+                width : '100%'
             }
         }
     )
@@ -25,7 +27,6 @@ function FullImage()
 {
     const classes = useStyle();
     const { id, index } = useParams();
-    console.log("id", id, index)
     return(
         
         
@@ -33,17 +34,23 @@ function FullImage()
             
             <Grid container >
 
-                    <Grid className={classes.myGrid}  item xs={12} sm={12} md={12} lg={12}>
+                    <Grid className={classes.myGrid}  item xs={12} sm={12} md={10} lg={10}>
 
-                        <img src={ MyData.map(
-                            (obj, ind) =>
-                            {
-                                if(id === obj.id)
-                                    return(obj.img[index])
-                                else
-                                    return null
-                            }
-                        ) } alt="" />
+                        {
+                            MyData.map(
+                                (obj, ind) => 
+                                {
+                                    if(Number(id) === obj.id)
+                                    {
+                                        return(
+                                            <img className={classes.myImg} src={obj.img[Number(index)]} alt="" key={ind} />
+                                        )
+                                    }
+                                    else
+                                        return null
+                                }
+                            )
+                        }
 
                     </Grid>
             </Grid>

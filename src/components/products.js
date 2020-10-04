@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MyData from "../temp/MyData.json";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { CartContext } from "../contexts/cartContext";
 
 
@@ -119,10 +119,9 @@ function handleFull()
                                             
                                             <GridListTile className={classes.gridItem} key={index} cols={1} onClick={handleFull}>
                                                 
-                                                {/* <Link to={`fsi`} className={classes.myLink} key={index}>
+                                                <Link to={`/fsi${id}${index}`} className={classes.myLink} key={index}>
                                                     <img className={classes.myImage} src={obj} alt={obj[index]} />
-                                                </Link> */}
-                                                <img className={classes.myImage} src={obj} alt={obj[index]} />
+                                                </Link>
                                               
                                                 
                                                     

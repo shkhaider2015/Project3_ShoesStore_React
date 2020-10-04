@@ -190,7 +190,6 @@ export default function PersistentDrawerLeft(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const { cart } = useContext(CartContext)
-  console.log("Special Cart", cart)
   const [cartBadge, setCartBadge] = useState(0)
 
   const isMenuOpen = Boolean(anchorEl);
@@ -422,9 +421,9 @@ export default function PersistentDrawerLeft(props) {
           <Route path="basketball" element={<MyGridView value="Basketball" />} />
           <Route path="running" element={<MyGridView value="Running" />} />
           <Route path="mycart" element={<CartList />} />
-          <Route path="fsi" element={<FullImage />} />
+          <Route path="fsi:id:index" element={<FullImage />} />
 
-          {/* <Route path="full/:id/:index" element={<FullImage  />} /> */}
+          
           <Route path=":id" element={<MyProducts />} />
           <Route path=":cat/:id/*" element={<MyProducts />} />
 
